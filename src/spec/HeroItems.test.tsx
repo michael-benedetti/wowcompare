@@ -1,6 +1,6 @@
 import {cleanup, render, RenderResult} from "@testing-library/react";
 import {Items} from "../helpers/sharedInterfaces";
-import {basicItems} from "./helpers/testObjects";
+import {basicItems} from "./test-doubles/stubObjects";
 import React from "react";
 import HeroItems from "../HeroItems";
 

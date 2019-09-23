@@ -2,7 +2,7 @@ import {cleanup, render, RenderResult} from "@testing-library/react";
 import {Profile} from "../helpers/sharedInterfaces";
 import React from "react";
 import HeroDetails from "../HeroDetails";
-import {basicProfile} from "./helpers/testObjects";
+import {basicProfile} from "./test-doubles/stubObjects";
 
 describe("WoW Compare", () => {
   let container: RenderResult;

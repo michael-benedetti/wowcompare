@@ -107,7 +107,7 @@ export interface Profile {
   achievementPoints?: number,
   thumbnail?: string,
   calcClass?: string,
-  faction?: number,
+  faction: number,
   items: Items,
   talents: Spec[],
   totalHonorableKills?: number

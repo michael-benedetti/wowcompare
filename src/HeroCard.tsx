@@ -1,14 +1,20 @@
 import React, {useEffect, useState} from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import {HeroIdentifier, Profile, WowRepository} from "./helpers/sharedInterfaces";
 import Card from "@material-ui/core/Card";
 import styled from "styled-components";
 import IconButton from "@material-ui/core/IconButton";
 import Close from "@material-ui/icons/Close";
 import HeroDetails from "./HeroDetails";
-import {CenterContainer} from "./sharedComponents/basicStyledComponents";
-import {THEME_PRIMARY, THEME_QUATERNARY, THEME_SECONDARY, THEME_TERTIARY} from "./helpers/theme";
+import {CenterContainer, StyledButton} from "./sharedComponents/basicStyledComponents";
+import {
+  THEME_PRIMARY,
+  THEME_PRIMARY_DARK,
+  THEME_SECONDARY,
+  THEME_TERTIARY,
+  THEME_TERTIARY_DARK,
+  THEME_TERTIARY_LIGHT
+} from "./helpers/theme";
 
 interface HeroCardProps {
   index: number;
@@ -27,11 +33,11 @@ const StyledCard = styled(Card)`
   display: flex;
   flex-direction: column;
   width: 200px;
+  height: 175px;
   padding: 10px;
-  margin: 30px;
   &.MuiPaper-root {
-    background-color: ${THEME_QUATERNARY};
-    border: 2px solid ${THEME_PRIMARY};
+    background-color: ${THEME_SECONDARY};
+    border: 2px solid ${THEME_PRIMARY_DARK};
   }
   `;
 
@@ -42,11 +48,11 @@ const DeleteButtonContainer = styled.div`
 
 const WowCompareInput = styled(TextField)`
   & input {
-    color: ${THEME_SECONDARY};
+    color: ${THEME_PRIMARY};
   }
   
   & label {
-    color: ${THEME_PRIMARY};
+    color: ${THEME_PRIMARY_DARK};
   }
   
   & label.Mui-focused {
@@ -64,11 +70,18 @@ const StyledIconButton = styled(IconButton)`
   }
   `;
 
-const StyledButton = styled(Button)`
-  &.MuiButton-root {
-    color: ${THEME_PRIMARY}
-  }
+const HeroContainer = styled(CenterContainer)`
+  background: ${THEME_TERTIARY};
+  padding: 15px;
+  margin: 20px;
+  border: 1px solid ${THEME_TERTIARY_LIGHT};
+  border-radius: 5px;
+  box-shadow: 4px 0px ${THEME_TERTIARY_DARK}, 0px 4px ${THEME_TERTIARY_DARK}, -2px 0px ${THEME_TERTIARY_LIGHT}, 0px -2px ${THEME_TERTIARY_LIGHT};
+  display: grid;
+  grid-gap: 20px;
+  color: white;
   `;
+
 const HeroCard: React.FC<HeroCardProps> = (props: HeroCardProps) => {
   const [formValues, setFormValues] = useState<HeroFormValues>({
     realm: props.heroIdentifier.realm,
@@ -99,12 +112,14 @@ const HeroCard: React.FC<HeroCardProps> = (props: HeroCardProps) => {
   }
 
   return (
-    <CenterContainer>
-      <StyledCard elevation={2}>
+    <HeroContainer>
+      <StyledCard
+        elevation={2}
+      >
         <DeleteButtonContainer>
           <StyledIconButton
             onClick={() => props.deleteHero(props.index)}
-            data-testid={`delete-hero-${props.heroIdentifier.key}`}
+            data-testid={`delete-hero-${props.index}`}
           >
             <Close fontSize={"small"}/>
           </StyledIconButton>
@@ -127,12 +142,12 @@ const HeroCard: React.FC<HeroCardProps> = (props: HeroCardProps) => {
         <StyledButton onClick={getProfile}>Submit</StyledButton>
       </StyledCard>
       {profile &&
-        <HeroDetails
-          profile={profile}
-          index={props.index}
-        />
+      <HeroDetails
+        profile={profile}
+        index={props.index}
+      />
       }
-    </CenterContainer>
+    </HeroContainer>
   );
 };
 

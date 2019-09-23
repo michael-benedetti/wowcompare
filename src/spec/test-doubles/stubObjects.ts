@@ -1,8 +1,21 @@
 import {Item, Items} from "../../helpers/sharedInterfaces";
 
 export const basicItem: Item = {
-  quality: 1,
-}
+  id: 122246,
+  name: "Tarnished Raging Berserker's Helm",
+  icon: "inv_helmet_25",
+  quality: 7,
+  itemLevel: 108,
+  tooltipParams: {
+    timewalkerLevel: 85,
+    azeritePower0: 0,
+    azeritePower1: 0,
+    azeritePower2: 0,
+    azeritePower3: 0,
+    azeritePowerLevel: 0,
+    azeritePower4: 0
+  }
+};
 
 export const basicItems: Items = {
   back: basicItem,
@@ -28,13 +41,14 @@ export const basicItems: Items = {
 export const basicProfile = {
   name: "Demospheus",
   class: 6,
+  faction: 1,
   race: 2,
   level: 120,
   items: basicItems,
   talents: [{
-      selected: true,
-      spec: {
-        name: "Blood",
-      }
-    }]
+    selected: true,
+    spec: {
+      name: "Blood",
+    }
+  }]
 };

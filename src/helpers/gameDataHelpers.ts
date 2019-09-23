@@ -1,5 +1,6 @@
 import {HeroIdentifier} from "./sharedInterfaces";
 import uniqid from "uniqid";
+import {THEME_ALLIANCE_PRIMARY, THEME_HORDE_PRIMARY, THEME_TERTIARY} from "./theme";
 
 export const PLAYABLE_CLASSES = ["", "Warrior", "Paladin", "Hunter", "Rogue", "Priest", "Death Knight", "Shaman", "Mage", "Warlock", "Monk", "Druid", "Demon Hunter"];
 
@@ -59,6 +60,12 @@ export const ITEM_QUALITY_COLORS: {[key: number]: string} = {
   6: "#e6cc80",
   7: "#e6cc80",
   8: "#00ccff",
+};
+
+export const FACTION_COLORS: {[key: number]: string} = {
+  '-1': THEME_TERTIARY,
+  0: THEME_ALLIANCE_PRIMARY,
+  1: THEME_HORDE_PRIMARY,
 };
 
 export const getNewHero = (): HeroIdentifier => {

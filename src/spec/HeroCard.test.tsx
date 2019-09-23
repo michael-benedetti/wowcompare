@@ -6,7 +6,7 @@ import {HeroIdentifier, WowRepository} from "../helpers/sharedInterfaces";
 import DummyWowRepository from "./test-doubles/DummyWowRepository";
 import {forIt} from "./helpers/asyncHelpers";
 import {getNewHero} from "../helpers/gameDataHelpers";
-import {basicProfile} from "./helpers/testObjects";
+import {basicProfile} from "./test-doubles/stubObjects";
 
 describe("Hero Card", () => {
   let container: RenderResult;
@@ -47,7 +47,7 @@ describe("Hero Card", () => {
   it('allows the user to delete a hero card', async () => {
     renderHeroCard();
 
-    userEvent.click(container.getByTestId("delete-hero-abc123"));
+    userEvent.click(container.getByTestId("delete-hero-0"));
 
     expect(deleteHeroSpy).toHaveBeenCalled();
   });

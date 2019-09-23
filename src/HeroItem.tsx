@@ -2,6 +2,7 @@ import React from "react";
 import {Item} from "./helpers/sharedInterfaces";
 import {ICON_POSITIONS, ITEM_QUALITY_COLORS} from "./helpers/gameDataHelpers";
 import styled from "styled-components";
+import {Tooltip} from "@material-ui/core";
 
 interface HeroItemProps {
   item: Item;
@@ -40,9 +41,25 @@ const ItemIcon = styled.div<ItemIconProps>`
   background-image: url(https://render-us.worldofwarcraft.com/icons/56/${props => props.item && props.item.icon}.jpg);
 `;
 
+const ItemTooltip = styled(Tooltip)`
+  && {
+    font-size: 20px;
+    background-color: black;
+  }
+  `;
+
 const HeroItem: React.FC<HeroItemProps> = (props: HeroItemProps) => {
   return (
-      <ItemIcon slot={props.slot} item={props.item} className={`${props.slot} ${!props.item && "empty"}`} data-testid={`hero-${props.index}-${props.slot}`}/>
+    <ItemTooltip
+      title={props.item && props.item.name}
+    >
+      <ItemIcon
+        slot={props.slot}
+        item={props.item}
+        className={`${props.slot} ${!props.item && "empty"}`}
+        data-testid={`hero-${props.index}-${props.slot}`}
+      />
+    </ItemTooltip>
   )
 };
 
