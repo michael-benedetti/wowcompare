@@ -3,6 +3,7 @@ import {Item} from "./helpers/sharedInterfaces";
 import {ICON_POSITIONS, ITEM_QUALITY_COLORS} from "./helpers/gameDataHelpers";
 import styled from "styled-components";
 import {Tooltip} from "@material-ui/core";
+import GameIconSlots from "./GameIcon-slots.png";
 
 interface HeroItemProps {
   item: Item;
@@ -23,7 +24,7 @@ const ItemIcon = styled.div<ItemIconProps>`
   cursor: pointer;
   
   &.empty {
-    background-image: url(https://worldofwarcraft.akamaized.net/static/components/GameIcon/GameIcon-slots.png);
+    background-image: url(${GameIconSlots});
     background-position: 0 ${props => ICON_POSITIONS[props.slot]}%;
     border: 1px solid gray;
     cursor: default;
@@ -52,6 +53,7 @@ const HeroItem: React.FC<HeroItemProps> = (props: HeroItemProps) => {
   return (
     <ItemTooltip
       title={props.item && props.item.name}
+      disableHoverListener={!props.item}
     >
       <ItemIcon
         slot={props.slot}

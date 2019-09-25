@@ -29,6 +29,12 @@ const HeroName = styled.div`
   grid-gap: 5px;
   `;
 
+const HeroDetailsContainer = styled(CenterContainer)`
+  & .Text {
+    margin-bottom: 10px;
+  }
+  `;
+
 const getSelectedSpec = (profile: Profile) => {
   const selectedSpec = profile.talents.find((spec) => {
     return spec.selected === true
@@ -39,14 +45,14 @@ const getSelectedSpec = (profile: Profile) => {
 
 const HeroDetails: React.FC<HeroDetailsProps> = (props: HeroDetailsProps) => {
   return (
-    <CenterContainer>
-      <HeroName className={props.profile.faction === 0 ? "Alliance" : "Horde"}>{props.profile.name}</HeroName>
-      <div>{`${props.profile.level} ${getSelectedSpec(props.profile)} ${PLAYABLE_RACES[props.profile.race]} ${PLAYABLE_CLASSES[props.profile.class]}`}</div>
+    <HeroDetailsContainer>
+      <HeroName className={`Text ${props.profile.faction === 0 ? "Alliance" : "Horde"}`}>{props.profile.name}</HeroName>
+      <div className={"Text"}>{`${props.profile.level} ${getSelectedSpec(props.profile)} ${PLAYABLE_RACES[props.profile.race]} ${PLAYABLE_CLASSES[props.profile.class]}`}</div>
       <HeroItems
         items={props.profile.items}
         index={props.index}
       />
-    </CenterContainer>
+    </HeroDetailsContainer>
   )
 }
 

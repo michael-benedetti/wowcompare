@@ -21,11 +21,18 @@ const StyledMenuBar = styled.div`
   padding: 0 20px 0 20px;
   `;
 
+const AddHeroButton = styled(StyledButton)`
+  & .MuiButton-label {
+    font-size: 20px;
+    font-family: Roboto;
+  }
+  `;
+
 const MenuBar: React.FC<MenuBarProps> = (props: MenuBarProps) => {
   return (
     <StyledMenuBar data-testid={"menu-bar"}>
       WoW Compare
-      <StyledButton onClick={props.addHero}>Add Hero</StyledButton>
+      <AddHeroButton onClick={props.addHero}>Add Hero</AddHeroButton>
     </StyledMenuBar>
   )
 };

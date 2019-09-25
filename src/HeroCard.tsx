@@ -15,6 +15,8 @@ import {
   THEME_TERTIARY_DARK,
   THEME_TERTIARY_LIGHT
 } from "./helpers/theme";
+import HordeLogo from "./Logo-horde.png";
+import AllianceLogo from "./Logo-alliance.png";
 
 interface HeroCardProps {
   index: number;
@@ -38,6 +40,33 @@ const StyledCard = styled(Card)`
   &.MuiPaper-root {
     background-color: ${THEME_SECONDARY};
     border: 2px solid ${THEME_PRIMARY_DARK};
+  }
+  
+  &.Alliance:before {
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 180px;
+    width: 200px;
+    position: absolute;
+    content: ' ';
+    opacity: 0.3;
+    background-image: url(${AllianceLogo});
+  }
+  
+  &.Horde:before {
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 180px;
+    width: 200px;
+    position: absolute;
+    content: ' ';
+    opacity: 0.3;
+    background-image: url(${HordeLogo});
+    transition: background 1.5s linear;
   }
   `;
 
@@ -114,6 +143,7 @@ const HeroCard: React.FC<HeroCardProps> = (props: HeroCardProps) => {
   return (
     <HeroContainer>
       <StyledCard
+        className={profile && profile.faction === 0 ? "Alliance" : profile && profile.faction === 1 ? "Horde" : ""}
         elevation={2}
       >
         <DeleteButtonContainer>
