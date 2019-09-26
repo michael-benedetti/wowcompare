@@ -1,10 +1,9 @@
 import {cleanup, render, RenderResult} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import React, {useRef} from "react";
+import React from "react";
 import App from "../App";
 import DummyWowRepository from "./test-doubles/DummyWowRepository";
 import {createMemoryHistory} from "history";
-import {getNewHero} from "../helpers/gameDataHelpers";
 
 describe("Hero Card", () => {
   let container: RenderResult;
@@ -62,5 +61,4 @@ describe("Hero Card", () => {
 
     expect(container.queryAllByText("Realm").length).toEqual(3);
   });
-
 });

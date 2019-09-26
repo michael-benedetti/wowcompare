@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
-import WowHttpRepository from "./WowHttpRepository";
 import HeroWorkspace from "./HeroWorkspace";
 import {composeHeroIdentifiersIntoParam, parseHerosQueryParam} from "./helpers/textHelpers";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-import {HeroIdentifier} from "./helpers/sharedInterfaces";
+import {HeroIdentifier, WowRepository} from "./helpers/sharedInterfaces";
 import uniqid from "uniqid";
 import {History} from "history";
 import MenuBar from "./MenuBar";
 import {THEME_PRIMARY_DARK} from "./helpers/theme";
 
 interface AppProps {
-  wowHttpRepository: WowHttpRepository;
+  wowHttpRepository: WowRepository;
   history: History;
 }
 

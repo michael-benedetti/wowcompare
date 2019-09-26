@@ -114,6 +114,7 @@ export interface Profile {
 }
 
 export interface WowRepository {
+  getToken: () => Promise<void>;
   getProfile: (realm: string, characterName: string) => Promise<Profile>;
 }
 
