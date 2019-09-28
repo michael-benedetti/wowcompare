@@ -34,4 +34,9 @@ public class WowcompareApplicationTests {
     public void getToken_isSuccessful() throws Exception {
         mvc.perform((MockMvcRequestBuilders.get(hostWithPort + "/api/v1/token"))).andExpect(status().isOk());
     }
+
+    @Test
+    public void getProfile_isSuccessful() throws Exception {
+        mvc.perform((MockMvcRequestBuilders.get(hostWithPort + "/api/v1/profile?realm=duskwood&characterName=Demospheus"))).andExpect(status().isOk());
+    }
 }
