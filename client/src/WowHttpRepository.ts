@@ -17,8 +17,8 @@ class WowHttpRepository implements WowRepository {
 
   public async getToken() {
     return await fetch("/api/v1/token").then((response: Response) => {
-      return response.json().then((token) => {
-        this.token = token["access_token"];
+      return response.text().then((token) => {
+        this.token = token;
         return;
       });
     });
