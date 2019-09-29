@@ -5,5 +5,5 @@ import java.io.IOException;
 public interface WowRepository {
     String getToken();
 
-    Object getProfile(String realm, String characterName) throws IOException;
+    Profile getProfile(String realm, String characterName) throws IOException;
 }

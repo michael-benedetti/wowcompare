@@ -21,15 +21,12 @@ public class HttpWowRepository implements WowRepository {
         return this.authenticationDaemon.getToken();
     }
 
-    public Object getProfile(String realm, String characterName) throws IOException {
+    public Profile getProfile(String realm, String characterName) throws IOException {
         RestTemplate restTemplate = new RestTemplate();
 
         String postUri = String.format("https://us.api.blizzard.com/wow/character/%s/%s?fields=items,talents&locale=en_US&access_token=%s", realm, characterName, authenticationDaemon.getToken());
-        ResponseEntity<String> response = restTemplate.getForEntity(postUri, String.class);
+        ResponseEntity<Profile> response = restTemplate.getForEntity(postUri, Profile.class);
 
-        ObjectMapper mapper = new ObjectMapper();
-        Object profile = mapper.readValue(response.getBody(), Object.class);
-
-        return profile;
+        return response.getBody();
     }
 }

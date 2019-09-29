@@ -22,7 +22,7 @@ public class WowController {
     }
 
     @GetMapping("/profile")
-    public Object getProfile(@RequestParam("realm") String realm, @RequestParam("characterName") String characterName) throws IOException {
+    public Profile getProfile(@RequestParam("realm") String realm, @RequestParam("characterName") String characterName) throws IOException {
         return wowRepository.getProfile(realm, characterName);
     }
 }
