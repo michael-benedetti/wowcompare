@@ -16,11 +16,9 @@ const HeroName = styled.div`
     font-family: Folkard;
     line-height: 11px;
     padding-top: 20px;
-    // color: ${THEME_ALLIANCE_PRIMARY};
   }
   
   &.Horde {
-    // color: ${THEME_HORDE_PRIMARY};
     font-family: LifeCraft;
   }
   font-size: 30px;
@@ -47,7 +45,8 @@ const HeroDetails: React.FC<HeroDetailsProps> = (props: HeroDetailsProps) => {
   return (
     <HeroDetailsContainer>
       <HeroName className={`Text ${props.profile.faction === 0 ? "Alliance" : "Horde"}`}>{props.profile.name}</HeroName>
-      <div className={"Text"}>{`${props.profile.level} ${getSelectedSpec(props.profile)} ${PLAYABLE_RACES[props.profile.race]} ${PLAYABLE_CLASSES[props.profile.class]}`}</div>
+      <div className={"Text"}>{`${props.profile.level} ${PLAYABLE_RACES[props.profile.race]}`}</div>
+      <div className={"Text"}>{`${getSelectedSpec(props.profile)} ${PLAYABLE_CLASSES[props.profile.class]}`}</div>
       <HeroItems
         items={props.profile.items}
         index={props.index}

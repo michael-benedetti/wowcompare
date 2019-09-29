@@ -9,8 +9,8 @@ interface TooltipParams {
 }
 
 interface Stat {
-  stat?: number,
-  amount?: number
+  stat: number,
+  amount: number
 }
 
 interface Appearance {
@@ -41,7 +41,7 @@ export interface Item {
   quality: number,
   itemLevel?: number,
   tooltipParams?: TooltipParams,
-  stats?: Stat[],
+  stats: Stat[],
   armor?: number,
   context?: string,
   bonusLists?: number[],

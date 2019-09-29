@@ -68,6 +68,43 @@ export const FACTION_COLORS: {[key: number]: string} = {
   1: THEME_HORDE_PRIMARY,
 };
 
+export const ITEM_TYPES: {[key: string]: string} = {
+  head: "Head",
+  neck: "Neck",
+  shoulder: "Shoulder",
+  back: "Back",
+  chest: "Chest",
+  shirt: "Shirt",
+  tabard: "Tabard",
+  wrist: "Wrist",
+  hands: "Hands",
+  waist: "Waist",
+  legs: "Legs",
+  feet: "Feet",
+  finger1: "Finger",
+  finger2: "Finger",
+  trinket1: "Trinket",
+  trinket2: "Trinket",
+  mainHand: "Main Hand",
+  offHand: "Offfhand",
+};
+
+export const STATS: {[key: number]: string} = {
+  3: "Agility",
+  4: "Strength",
+  5: "Intellect",
+  7: "Stamina",
+  32: "Critical Strike",
+  36: "Haste",
+  40: "Versatility",
+  49: "Mastery",
+  63: "Avoidance",
+  71: "Strength",
+  72: "Strength",
+  73: "Intellect",
+  74: "Strength",
+};
+
 export const getNewHero = (): HeroIdentifier => {
   return {realm: "", characterName: "", key: uniqid.process()}
 };

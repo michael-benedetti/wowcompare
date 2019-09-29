@@ -4,6 +4,7 @@ import {ICON_POSITIONS, ITEM_QUALITY_COLORS} from "./helpers/gameDataHelpers";
 import styled from "styled-components";
 import {Tooltip} from "@material-ui/core";
 import GameIconSlots from "./GameIcon-slots.png";
+import ItemTooltip from "./ItemTooltip";
 
 interface HeroItemProps {
   item: Item;
@@ -42,17 +43,14 @@ const ItemIcon = styled.div<ItemIconProps>`
   background-image: url(https://render-us.worldofwarcraft.com/icons/56/${props => props.item && props.item.icon}.jpg);
 `;
 
-const ItemTooltip = styled(Tooltip)`
-  && {
-    font-size: 20px;
-    background-color: black;
-  }
-  `;
 
 const HeroItem: React.FC<HeroItemProps> = (props: HeroItemProps) => {
   return (
-    <ItemTooltip
-      title={props.item && props.item.name}
+    <Tooltip
+      title={<ItemTooltip
+        item={props.item}
+        slot={props.slot}
+      />}
       disableHoverListener={!props.item}
     >
       <ItemIcon
@@ -61,7 +59,7 @@ const HeroItem: React.FC<HeroItemProps> = (props: HeroItemProps) => {
         className={`${props.slot} ${!props.item && "empty"}`}
         data-testid={`hero-${props.index}-${props.slot}`}
       />
-    </ItemTooltip>
+    </Tooltip>
   )
 };
 

@@ -5,7 +5,11 @@ export const basicItem: Item = {
   name: "Tarnished Raging Berserker's Helm",
   icon: "inv_helmet_25",
   quality: 7,
-  itemLevel: 108,
+  itemLevel: 345,
+  stats: [
+    {stat: 7, amount: 80},
+    {stat: 74, amount: 100},
+  ],
   tooltipParams: {
     timewalkerLevel: 85,
     azeritePower0: 0,
