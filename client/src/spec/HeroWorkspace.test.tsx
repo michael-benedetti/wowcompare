@@ -58,7 +58,6 @@ describe("Hero Workspace", () => {
     userEvent.click(container.getByText("Submit"));
 
     expect(wowRepository.getProfile).toHaveBeenCalledWith("duskwood", "Demospheus");
-    // expect(updateHeroSpy).toHaveBeenCalled();
   });
 });
 

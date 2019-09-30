@@ -4,7 +4,7 @@ import {basicItem} from "./test-doubles/stubObjects";
 import React from "react";
 import ItemTooltip from "../ItemTooltip";
 
-describe("Hero Item", () => {
+describe("Item Tooltip", () => {
   let container: RenderResult;
 
   function renderHeroItem(item: Item = basicItem, slot: string = "head") {

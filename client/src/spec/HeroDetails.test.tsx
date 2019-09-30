@@ -4,7 +4,7 @@ import React from "react";
 import HeroDetails from "../HeroDetails";
 import {basicProfile} from "./test-doubles/stubObjects";
 
-describe("WoW Compare", () => {
+describe("Hero Details", () => {
   let container: RenderResult;
 
   function renderHeroDetails(profile: Profile = basicProfile as Profile) {
@@ -32,7 +32,8 @@ describe("WoW Compare", () => {
     renderHeroDetails();
 
     container.getByText("Demospheus");
-    container.getByText("120 Blood Orc Death Knight");
+    container.getByText("120 Orc");
+    container.getByText("Blood Death Knight");
   });
 
   it("should render hero items", async () => {

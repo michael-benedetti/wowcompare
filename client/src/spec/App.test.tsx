@@ -5,7 +5,7 @@ import App from "../App";
 import DummyWowRepository from "./test-doubles/DummyWowRepository";
 import {createMemoryHistory} from "history";
 
-describe("Hero Card", () => {
+describe("App", () => {
   let container: RenderResult;
 
   function renderApp(initialHistory: string[] = []) {
@@ -16,6 +16,16 @@ describe("Hero Card", () => {
       />
     )
   }
+
+  // Suppress act() warnings
+  const consoleError = console.error;
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation((...args) => {
+      if (!args[0].includes('Warning: An update to %s inside a test was not wrapped in act')) {
+        consoleError(...args);
+      }
+    });
+  });
 
   afterEach(cleanup);
 
