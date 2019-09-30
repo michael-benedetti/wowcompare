@@ -49,7 +49,7 @@ const TooltipContainer = styled.div`
 
 const ItemTooltip: React.FC<ItemTooltipProps> = (props: ItemTooltipProps) => {
   return (
-    <TooltipContainer>
+    <TooltipContainer data-testid={"item-tooltip"}>
       <div className={`Quality-${props.item.quality}`}>{props.item.name}</div>
       <div>{`Item Level ${props.item.itemLevel}`}</div>
       <div>{ITEM_TYPES[props.slot]}</div>

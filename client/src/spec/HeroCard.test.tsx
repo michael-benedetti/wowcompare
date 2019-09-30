@@ -5,8 +5,7 @@ import userEvent from "@testing-library/user-event";
 import {HeroIdentifier, WowRepository} from "../helpers/sharedInterfaces";
 import DummyWowRepository from "./test-doubles/DummyWowRepository";
 import {forIt} from "./helpers/asyncHelpers";
-import {getNewHero} from "../helpers/gameDataHelpers";
-import {basicProfile} from "./test-doubles/stubObjects";
+import {basicProfile, newHeroIdentifier} from "./test-doubles/stubObjects";
 
 describe("Hero Card", () => {
   let container: RenderResult;
@@ -22,7 +21,8 @@ describe("Hero Card", () => {
         deleteHero={deleteHeroSpy}
         wowRepository={wowRepository}
         heroIdentifier={heroIdentifier}
-        updateHero={() => {}}
+        updateHero={() => {
+        }}
       />
     )
   }
@@ -64,7 +64,7 @@ describe("Hero Card", () => {
   });
 
   it("should not attempt to fetch a profile if given heroIdentifier prop is empty", async () => {
-    renderHeroCard(getNewHero());
+    renderHeroCard(newHeroIdentifier());
 
     expect(wowRepository.getProfile).not.toHaveBeenCalled();
   });

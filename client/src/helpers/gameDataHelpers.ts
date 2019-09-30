@@ -104,7 +104,3 @@ export const STATS: {[key: number]: string} = {
   73: "Intellect",
   74: "Strength",
 };
-
-export const getNewHero = (): HeroIdentifier => {
-  return {realm: "", characterName: "", key: uniqid.process()}
-};

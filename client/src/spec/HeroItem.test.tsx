@@ -1,20 +1,27 @@
-import {cleanup, render, RenderResult, fireEvent} from "@testing-library/react";
+import {cleanup, fireEvent, render, RenderResult} from "@testing-library/react";
 import {Item} from "../helpers/sharedInterfaces";
 import {basicItem} from "./test-doubles/stubObjects";
 import React from "react";
 import HeroItem from "../HeroItem";
-import userEvent from "@testing-library/user-event";
+import {HeroWorkspaceContext} from "../HeroWorkspace";
 
 describe("Hero Item", () => {
   let container: RenderResult;
 
-  function renderHeroItem(item: Item = basicItem, slot: string = "head") {
+  function renderHeroItem(item: Item = basicItem, slot: string = "head", tooltipVisible = "") {
     container = render(
-      <HeroItem
-        item={item}
-        index={0}
-        slot={slot}
-      />
+      <HeroWorkspaceContext.Provider
+        value={{
+          tooltipVisible: tooltipVisible,
+          setTooltipVisible: () => {
+          }
+        }}>
+        <HeroItem
+          item={item}
+          index={0}
+          slot={slot}
+        />
+      </HeroWorkspaceContext.Provider>
     )
   }
 
@@ -23,8 +30,10 @@ describe("Hero Item", () => {
     // Resolve jest document.createRange issue
     if (window.document) {
       window.document.createRange = () => ({
-        setStart: () => {},
-        setEnd: () => {},
+        setStart: () => {
+        },
+        setEnd: () => {
+        },
         commonAncestorContainer: {
           nodeName: 'BODY',
           ownerDocument: document,
@@ -42,10 +51,8 @@ describe("Hero Item", () => {
 
   afterEach(cleanup);
 
-  it("should display item information on hover", async () => {
-    renderHeroItem();
-
-    fireEvent.mouseEnter(container.getByTestId("hero-0-head"));
+  it("should display item information as a tooltip if tooltip for slot is active", async () => {
+    renderHeroItem(undefined, "head", "head");
 
     container.getByText("Tarnished Raging Berserker's Helm");
   });

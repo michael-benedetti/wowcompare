@@ -1,9 +1,11 @@
-import {cleanup, render, RenderResult} from "@testing-library/react";
+import {cleanup, fireEvent, render, RenderResult} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import App from "../App";
 import DummyWowRepository from "./test-doubles/DummyWowRepository";
 import {createMemoryHistory} from "history";
+import {existingHeroIdentifier} from "./test-doubles/stubObjects";
+import {forIt} from "./helpers/asyncHelpers";
 
 describe("App", () => {
   let container: RenderResult;
@@ -17,9 +19,22 @@ describe("App", () => {
     )
   }
 
-  // Suppress act() warnings
+
   const consoleError = console.error;
   beforeAll(() => {
+    // Resolve jest document.createRange issue
+    if (window.document) {
+      window.document.createRange = () => ({
+        setStart: () => {},
+        setEnd: () => {},
+        commonAncestorContainer: {
+          nodeName: 'BODY',
+          ownerDocument: document,
+        },
+      });
+    }
+
+    // Suppress act() warnings
     jest.spyOn(console, 'error').mockImplementation((...args) => {
       if (!args[0].includes('Warning: An update to %s inside a test was not wrapped in act')) {
         consoleError(...args);
@@ -70,5 +85,15 @@ describe("App", () => {
     container.getByTestId("delete-hero-0").click();
 
     expect(container.queryAllByText("Realm").length).toEqual(3);
+  });
+
+  it("should open tooltips for all heros when hovering over an item slot", async () => {
+    renderApp(["?heros=1,1&2,2&3,3&4,4"]);
+
+    await forIt();
+
+    fireEvent.mouseEnter(container.getByTestId("hero-0-head"));
+
+    expect(container.getAllByTestId("item-tooltip").length).toEqual(4);
   });
 });

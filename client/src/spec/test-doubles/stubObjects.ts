@@ -1,4 +1,5 @@
-import {Item, Items} from "../../helpers/sharedInterfaces";
+import {HeroIdentifier, Item, Items} from "../../helpers/sharedInterfaces";
+import uniqid from "uniqid";
 
 export const basicItem: Item = {
   id: 122246,
@@ -55,4 +56,12 @@ export const basicProfile = {
       name: "Blood",
     }
   }]
+};
+
+export const newHeroIdentifier: () => HeroIdentifier = () => {
+  return {realm: "", characterName: "", key: uniqid.process()};
+};
+
+export const existingHeroIdentifier: () => HeroIdentifier = () => {
+  return {realm: "duskwood", characterName: "Demospheus", key: uniqid.process()};
 };

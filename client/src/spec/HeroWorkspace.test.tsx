@@ -1,11 +1,10 @@
 import React from 'react';
-import {render, RenderResult, cleanup} from '@testing-library/react'
+import {cleanup, fireEvent, render, RenderResult} from '@testing-library/react'
 import DummyWowRepository from "./test-doubles/DummyWowRepository";
 import HeroWorkspace from "../HeroWorkspace";
 import {HeroIdentifier, WowRepository} from "../helpers/sharedInterfaces";
 import userEvent from "@testing-library/user-event";
-import {getNewHero} from "../helpers/gameDataHelpers";
-import {basicProfile} from "./test-doubles/stubObjects";
+import {basicProfile, existingHeroIdentifier, newHeroIdentifier} from "./test-doubles/stubObjects";
 
 describe("Hero Workspace", () => {
   let container: RenderResult;
@@ -44,13 +43,13 @@ describe("Hero Workspace", () => {
   afterEach(cleanup);
 
   it("should render heros if provided from props", async () => {
-    renderHeroWorkspace([getNewHero(), getNewHero(), getNewHero(), getNewHero()]);
+    renderHeroWorkspace([newHeroIdentifier(), newHeroIdentifier(), newHeroIdentifier(), newHeroIdentifier()]);
 
     expect(container.queryAllByText("Realm").length).toEqual(4);
   });
 
   it('allows the user to fill realm and character name and fetch a profile', () => {
-    renderHeroWorkspace([getNewHero()]);
+    renderHeroWorkspace([newHeroIdentifier()]);
 
     userEvent.type(container.getByTestId("realm-input-0"), "duskwood");
     userEvent.type(container.getByTestId("characterName-input-0"), "Demospheus");
