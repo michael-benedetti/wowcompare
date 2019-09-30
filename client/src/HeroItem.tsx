@@ -3,7 +3,7 @@ import {Item} from "./helpers/sharedInterfaces";
 import {ICON_POSITIONS, ITEM_QUALITY_COLORS} from "./helpers/gameDataHelpers";
 import styled from "styled-components";
 import {Tooltip} from "@material-ui/core";
-import GameIconSlots from "./GameIcon-slots.png";
+import GameIconSlots from "./resources/images/GameIcon-slots.png";
 import ItemTooltip from "./ItemTooltip";
 
 interface HeroItemProps {

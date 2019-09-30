@@ -15,8 +15,8 @@ import {
   THEME_TERTIARY_DARK,
   THEME_TERTIARY_LIGHT
 } from "./helpers/theme";
-import HordeLogo from "./Logo-horde.png";
-import AllianceLogo from "./Logo-alliance.png";
+import HordeLogo from "./resources/images/Logo-horde.png";
+import AllianceLogo from "./resources/images/Logo-alliance.png";
 
 interface HeroCardProps {
   index: number;

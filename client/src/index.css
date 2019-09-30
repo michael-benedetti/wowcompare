@@ -11,10 +11,10 @@ body {
 
 @font-face {
     font-family: 'LifeCraft';
-    src: local('LifeCraft'), url(./LifeCraft_Font.ttf) format('truetype');
+    src: local('LifeCraft'), url(resources/fonts/LifeCraft_Font.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Folkard';
-    src: local('Folkard'), url(./folkard_.ttf) format('truetype');
+    src: local('Folkard'), url(resources/fonts/folkard_.ttf) format('truetype');
 }
